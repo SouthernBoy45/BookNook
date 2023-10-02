@@ -18,7 +18,7 @@ namespace FullStackAuth_WebAPI.Controllers
 
         [HttpPost("{Review}"), Authorize]
 
-        public IActionResult Post(int id, [FromBody] Review data)
+        public IActionResult Post(int id, [FromBody] Models.Review data)
         {
             try
             {

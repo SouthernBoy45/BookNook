@@ -8,7 +8,7 @@ namespace FullStackAuth_WebAPI.Models
     {
         [Key]
 
-        public int Id { get; set; }
+        public string Id { get; set; }
         [Required]
         public string BookId { get; set; }
         [Required]
@@ -17,6 +17,6 @@ namespace FullStackAuth_WebAPI.Models
         public double Rating { get; set; }
         [ForeignKey ("User")]
         public string UserId { get; set; }
-        public ICollection< User> User { get; set; }
+        public User User { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿using FullStackAuth_WebAPI.Models;
+﻿/*using FullStackAuth_WebAPI.Models;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
@@ -13,3 +13,4 @@ namespace FullStackAuth_WebAPI.DataTransferObjects
         public UserForDisplayDto Owner { get; set; }
     }
 }
+*/
