@@ -5,6 +5,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FullStackAuth_WebAPI.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class BookDetailsController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
