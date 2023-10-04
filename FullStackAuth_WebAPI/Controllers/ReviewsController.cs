@@ -16,9 +16,9 @@ namespace FullStackAuth_WebAPI.Controllers
             _context = context;
         }
 
-        [HttpPost("{Review}"), Authorize]
+        [HttpPost, Authorize]
 
-        public IActionResult Post(int id, [FromBody] Models.Review data)
+        public IActionResult Post([FromBody] Models.Review data)
         {
             try
             {
@@ -28,7 +28,8 @@ namespace FullStackAuth_WebAPI.Controllers
                 {
                     return Unauthorized();
                 }
-
+                data.UserId = userId;
+                data.User = _context.Users.Find(userId);
                 _context.Reviews.Add(data);
 
                 if (!ModelState.IsValid)

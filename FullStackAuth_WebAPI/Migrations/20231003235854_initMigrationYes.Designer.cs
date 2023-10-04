@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FullStackAuth_WebAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230621211652_init")]
-    partial class init
+    [Migration("20231003235854_initMigrationYes")]
+    partial class initMigrationYes
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -22,31 +22,31 @@ namespace FullStackAuth_WebAPI.Migrations
                 .HasAnnotation("ProductVersion", "7.0.7")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("FullStackAuth_WebAPI.Models.Car", b =>
+            modelBuilder.Entity("FullStackAuth_WebAPI.Models.Review", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("Make")
+                    b.Property<string>("BookId")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("Model")
+                    b.Property<double>("Rating")
+                        .HasColumnType("double");
+
+                    b.Property<string>("Text")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("OwnerId")
+                    b.Property<string>("UserId")
                         .HasColumnType("varchar(255)");
-
-                    b.Property<int>("Year")
-                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("OwnerId");
+                    b.HasIndex("UserId");
 
-                    b.ToTable("Cars");
+                    b.ToTable("Reviews");
                 });
 
             modelBuilder.Entity("FullStackAuth_WebAPI.Models.User", b =>
@@ -147,13 +147,13 @@ namespace FullStackAuth_WebAPI.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "59de2413-2986-49fa-a7ea-d2ee9bae8830",
+                            Id = "42dd4515-e8a3-4e1f-a10d-984da4a579ba",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "02826bcd-2b15-4c0a-8d85-281ade12b9b9",
+                            Id = "033c162e-d659-4bd4-ba70-c85efd4a9eb8",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -261,13 +261,13 @@ namespace FullStackAuth_WebAPI.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("FullStackAuth_WebAPI.Models.Car", b =>
+            modelBuilder.Entity("FullStackAuth_WebAPI.Models.Review", b =>
                 {
-                    b.HasOne("FullStackAuth_WebAPI.Models.User", "Owner")
+                    b.HasOne("FullStackAuth_WebAPI.Models.User", "User")
                         .WithMany()
-                        .HasForeignKey("OwnerId");
+                        .HasForeignKey("UserId");
 
-                    b.Navigation("Owner");
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

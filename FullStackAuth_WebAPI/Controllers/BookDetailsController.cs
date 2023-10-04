@@ -2,6 +2,7 @@
 using FullStackAuth_WebAPI.DataTransferObjects;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace FullStackAuth_WebAPI.Controllers
 {
@@ -15,22 +16,25 @@ namespace FullStackAuth_WebAPI.Controllers
             _context = context;
         }
         [HttpGet("{bookId}")]
-        public IActionResult Get(int bookId)
+        public IActionResult Get(string bookId)
         {
             try
             {
                 var reviews = _context.Reviews.Select(r => new BookDetailsDTO
                 {
-                    Id = r.Id,
                     BookId = r.BookId,
                     Text = r.Text,
-                    Rating = r.Rating,
+                    Rating = ,
                     Review = new ReviewWithUserDTO
                     {
-                        Id = r.User.Id,
+                        Id = r.Id,
                         BookId = r.BookId,
                         Text = r.Text,
-                        Rating = r.Rating
+                        Rating = r.Rating,
+                        User = new UserForDisplayDto
+                        {
+                            Id = r.Id
+                        }
                     }
                 }).ToList();
 
