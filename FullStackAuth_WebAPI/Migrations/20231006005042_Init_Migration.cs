@@ -9,7 +9,7 @@ using MySql.EntityFrameworkCore.Metadata;
 namespace FullStackAuth_WebAPI.Migrations
 {
     /// <inheritdoc />
-    public partial class initMigration : Migration
+    public partial class Init_Migration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -198,8 +198,8 @@ namespace FullStackAuth_WebAPI.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "46622b14-8e61-44ed-9231-9a395d7bb03d", null, "Admin", "ADMIN" },
-                    { "dfa4381b-65ee-44ab-8fa8-d54c4a663fc4", null, "User", "USER" }
+                    { "32bf48c1-7cf8-4941-8bb5-7d739b789db5", null, "User", "USER" },
+                    { "b64b5fcb-2cea-475d-bd79-c5a95147ca75", null, "Admin", "ADMIN" }
                 });
 
             migrationBuilder.CreateIndex(

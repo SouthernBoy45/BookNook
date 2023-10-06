@@ -1,5 +1,6 @@
 ﻿using FullStackAuth_WebAPI.Data;
 using FullStackAuth_WebAPI.DataTransferObjects;
+using FullStackAuth_WebAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
@@ -23,17 +24,15 @@ namespace FullStackAuth_WebAPI.Controllers
                 var reviews = _context.Reviews.Select(r => new BookDetailsDTO
                 {
                     BookId = r.BookId,
-                    Text = r.Text,
-                    Rating = ,
+                    Rating = _context.Reviews.Where(r => r.BookId == bookId).Average(r => r.Rating),
                     Review = new ReviewWithUserDTO
                     {
                         Id = r.Id,
-                        BookId = r.BookId,
                         Text = r.Text,
                         Rating = r.Rating,
                         User = new UserForDisplayDto
                         {
-                            Id = r.Id
+                            UserName = r.User.UserName
                         }
                     }
                 }).ToList();

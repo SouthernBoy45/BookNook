@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FullStackAuth_WebAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231003235854_initMigrationYes")]
-    partial class initMigrationYes
+    [Migration("20231006005042_Init_Migration")]
+    partial class Init_Migration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -147,13 +147,13 @@ namespace FullStackAuth_WebAPI.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "42dd4515-e8a3-4e1f-a10d-984da4a579ba",
+                            Id = "32bf48c1-7cf8-4941-8bb5-7d739b789db5",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "033c162e-d659-4bd4-ba70-c85efd4a9eb8",
+                            Id = "b64b5fcb-2cea-475d-bd79-c5a95147ca75",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
