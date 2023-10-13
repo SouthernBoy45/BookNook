@@ -6,10 +6,17 @@ import "./App.css";
 import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
+import BookDetails from "./pages/BookDetails/BookDetails";
+import SearchPage from "./pages/SearchPage/SearchPage";
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
+import Book from "./components/Book/Book";
+import ResultsList from "./components/ResultsList/ResultsList";
+import ReviewForm from "./components/ReviewForm/ReviewForm";
+import ReviewList from "./components/ReviewList/ReviewList";
+import SearchBar from "./components/SearchBar/SearchBar";
 
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
@@ -29,6 +36,7 @@ function App() {
         />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/search" element={<SearchPage />} />
       </Routes>
       <Footer />
     </div>
