@@ -8,20 +8,20 @@ const HomePage = () => {
   // The "user" value from this Hook contains user information (id, userName, email) from the decoded token
   // The "token" value is the JWT token sent from the backend that you will send back in the header of any request requiring authentication
   const [user, token] = useAuth();
-  const [cars, setCars] = useState([]);
+  const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    fetchCars();
+    fetchReviews();
   }, [token]);
 
-  const fetchCars = async () => {
+  const fetchReviews = async () => {
     try {
-      let response = await axios.get("https://localhost:5001/api/cars/myCars", {
+      let response = await axios.get("https://localhost:5001/api/Reviews", {
         headers: {
           Authorization: "Bearer " + token,
         },
       });
-      setCars(response.data);
+      setReviews(response.data);
     } catch (error) {
       console.log(error.response.data);
     }
@@ -31,10 +31,10 @@ const HomePage = () => {
     <div className="container">
       {console.log(user)}
       <h1>Home Page for {user.userName}!</h1>
-      {cars &&
-        cars.map((car) => (
-          <p key={car.id}>
-            {car.year} {car.model} {car.make}
+      {reviews &&
+        reviews.map((review) => (
+          <p key={review.id}>
+            {review.book}
           </p>
         ))}
     </div>

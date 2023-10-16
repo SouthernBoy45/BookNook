@@ -1,23 +1,22 @@
+import { Routes, Route } from "react-router-dom";
+import React, { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import BookDetails from "../../pages/BookDetails/BookDetails";
 
-import React, { useState } from 'react';
+const Book = ({ book }) => {
+  const [bookCard, setBookCard] = useState("");
 
+  return (
+    <div>
+      <ul>
+        <li>
+          <Link to="/bookDetails">
+          {book.volumeInfo.title} by {book.volumeInfo.authors}
+          </Link>
+        </li>
+      </ul>
+    </div>
+  );
+};
 
-const Book = ({books, searchForBooks}) => {
-
-    const [bookCard, setBookCard] = useState("");
-    
-    function booksList(){
-        searchForBooks().map();
-    } 
-
-    return ( 
-        <div>
-            <h1> Book Title Here </h1>
-            <ul>   
-            <li>{booksList}</li> 
-            </ul>
-        </div>
-     );
-}
- 
 export default Book;

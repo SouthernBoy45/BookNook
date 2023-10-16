@@ -36,7 +36,8 @@ function App() {
         />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/search" element={<SearchPage />} />
+        <Route path="/search/*" element={<SearchPage searchPageProp book/>} />
+        <Route path="/bookDetails" element={<BookDetails />} />
       </Routes>
       <Footer />
     </div>
