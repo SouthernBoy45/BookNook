@@ -1,6 +1,5 @@
-import { Routes, Route } from "react-router-dom";
 import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import BookDetails from "../../pages/BookDetails/BookDetails";
 
 const Book = ({ book }) => {
@@ -8,12 +7,10 @@ const Book = ({ book }) => {
 
   return (
     <div>
-      <ul>
-        <li>
-          <Link to="/bookDetails">
+      <ul key={book.id}>
+        <li><Link to={`/bookDetails/${book.id}`}>
           {book.volumeInfo.title} by {book.volumeInfo.authors}
-          </Link>
-        </li>
+        </Link></li>
       </ul>
     </div>
   );

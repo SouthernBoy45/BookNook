@@ -4,7 +4,7 @@ import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 import Book from "../../components/Book/Book";
 
-const SearchPage = ({ props, book }) => {
+const SearchPage = ({ props, book, review }) => {
   const [userInput, setUserInput] = useState("");
   const [books, setBooks] = useState([]);
 
@@ -14,7 +14,7 @@ const SearchPage = ({ props, book }) => {
         `https://www.googleapis.com/books/v1/volumes?q=${userInput}`
       );
       console.log(response.data);
-      setBooks(response.data.items).map();
+      setBooks(response.data.items);
     } catch (error) {
       console.log(error.response);
     }
@@ -38,8 +38,10 @@ const SearchPage = ({ props, book }) => {
           Search
         </button>
       </form>
-      <div>{books.map((book, index) => (
-            <Book book = {book} index = {index} key = {book.id}/>))}</div>
+      <h1>Search Results</h1>
+      <div>
+        {books && books.map((book, index) => {
+          return(  <Book book = {book} index = {index} key = {book.id}/>)})}</div>
     </div>
   );
 };
