@@ -5,14 +5,16 @@ import axios from "axios";
 import Book from "../../components/Book/Book";
 
 const SearchPage = ({ props, book, review }) => {
+  
+  const [user, token] = useAuth();
   const [userInput, setUserInput] = useState("");
   const [books, setBooks] = useState([]);
 
   const searchForBooks = async () => {
     try {
       let response = await axios.get(
-        `https://www.googleapis.com/books/v1/volumes?q=${userInput}`
-      );
+        `https://www.googleapis.com/books/v1/volumes?q=${userInput}`);
+        
       console.log(response.data);
       setBooks(response.data.items);
     } catch (error) {

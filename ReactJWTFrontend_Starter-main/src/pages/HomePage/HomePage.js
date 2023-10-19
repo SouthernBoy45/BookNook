@@ -21,7 +21,7 @@ const HomePage = () => {
           Authorization: "Bearer " + token,
         },
       });
-      setReviews(response.data);
+      setReviews(response.data.review);
     } catch (error) {
       console.log(error.response.data);
     }

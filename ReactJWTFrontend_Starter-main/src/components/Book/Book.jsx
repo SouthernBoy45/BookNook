@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import BookDetails from "../../pages/BookDetails/BookDetails";
 
-const Book = ({ book }) => {
+const Book = ({ book, review }) => {
   const [bookCard, setBookCard] = useState("");
 
   return (

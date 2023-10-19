@@ -5,7 +5,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import ReviewList from "../../components/ReviewList/ReviewList";
 
-const BookDetails = ({ book, review, index }) => {
+const BookDetails = ({ book, review }) => {
   const { bookId } = useParams();
   const [bookDetails, setBookDetails] = useState();
 
@@ -19,8 +19,8 @@ const BookDetails = ({ book, review, index }) => {
         `https://www.googleapis.com/books/v1/volumes/${bookId}`
       );
       setBookDetails(response.data);
-
       console.log(response);
+
     } catch (error) {
       console.log(error);
     }
@@ -36,9 +36,11 @@ const BookDetails = ({ book, review, index }) => {
         <div>{bookDetails.volumeInfo.authors}</div>
         <div>{bookDetails.volumeInfo.description}</div>
       </li>
-      <div>{<ReviewList review={review} index={index} key={review.id}/>}</div>
+      <div>
+        <ReviewList review={review}/>
+      </div>
     </div>
-  ) : <h1>Loading</h1>;
+  ) : <h1>Loading...</h1>;
 };
 
 export default BookDetails;

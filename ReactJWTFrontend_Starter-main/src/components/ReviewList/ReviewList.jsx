@@ -5,9 +5,9 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 
 
-const ReviewList = ({book,review,index}) => {
+const ReviewList = ({book,review}) => {
 const { bookId } = useParams();
-const [reviews, setReviews] = useState([]);
+const [reviews, setReviews] = useState();
 
 useEffect(() => {
   displayReviews();
@@ -18,7 +18,7 @@ const displayReviews = async () => {
     let response = await axios.get(
       `https://localhost:5001/api/BookDetails/${bookId}`
     );
-    setReviews(response.data.review);
+    setReviews(response.data);
 
     console.log(response);
 
@@ -29,13 +29,12 @@ const displayReviews = async () => {
 return (
     <div> 
         <div>
-        { reviews && reviews.map((review, index) => {
-          return(  
-        <ul>
-            <li>{review.rating}</li>
-            <li>{review.text} {review.user}</li>
-        </ul>
-        )})}
+          {reviews.map((review) =>{
+            return(<ul key={reviews.id}>
+              <li>Average Rating{reviews.rating}</li>
+              <li>Review{reviews.review.text} {reviews.review.rating} {reviews.review.user}</li>
+          </ul>)
+          })}
         </div>
     </div>
 )
