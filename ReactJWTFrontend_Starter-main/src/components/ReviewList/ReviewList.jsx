@@ -18,7 +18,6 @@ const ReviewList = ({ book, review, index }) => {
         `https://localhost:5001/api/BookDetails/${bookId}`
       );
       setReviews(response.data);
-
       console.log(response);
     } catch (error) {
       console.log(error);
@@ -26,20 +25,20 @@ const ReviewList = ({ book, review, index }) => {
   };
 
   console.log(reviews);
+
   return (
     <div>
-      <h3>Average Rating {reviews.rating}</h3>
+      <h3>Average Rating {reviews.averageRating}</h3>
       <div>
-        {reviews.map((review) => {
-          return (
-            <ul key={review.id}>
-              <li>
-                Review {review.review.text} {review.review.rating}{" "}
-                {review.review.user.userName}
+        <ul>
+          {reviews.reveiws.map((reviews) => {
+            return (
+              <li key={reviews.id}>
+                Reviews {reviews.text} {reviews.rating} {reviews.review.user.userName}
               </li>
-            </ul>
-          );
-        })}
+            );
+          })}
+        </ul>
       </div>
     </div>
   );

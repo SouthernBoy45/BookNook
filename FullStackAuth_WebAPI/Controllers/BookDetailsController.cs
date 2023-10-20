@@ -21,23 +21,26 @@ namespace FullStackAuth_WebAPI.Controllers
         {
             try
             {
-                var reviews = _context.Reviews.Select(r => new BookDetailsDTO
-                {
-                    BookId = r.BookId,
-                    Rating = _context.Reviews.Where(r => r.BookId == bookId).Average(r => r.Rating),
-                    Review = new ReviewWithUserDTO
+                var reviews = _context.Reviews.Where(r => r.BookId == bookId)
+                    .Include(r => r.User).Select(r => new ReviewWithUserDTO
                     {
-                        Id = r.Id,
+                        BookId = r.BookId,
                         Text = r.Text,
                         Rating = r.Rating,
                         User = new UserForDisplayDto
                         {
                             UserName = r.User.UserName
                         }
-                    }
-                }).ToList();
+                    }).ToList();
 
-                return StatusCode(200, reviews);
+                double averageRating = reviews.Average(r => r.Rating);
+                var bookDetails = new BookDetailsDTO
+                {
+                    Reviews = reviews,
+                    AverageRating = averageRating
+                };
+
+                return StatusCode(200, bookDetails);
             }
             catch (Exception ex)
             {
