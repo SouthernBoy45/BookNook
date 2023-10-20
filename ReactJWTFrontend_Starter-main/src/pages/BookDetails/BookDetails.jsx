@@ -37,7 +37,7 @@ const BookDetails = ({ book, review }) => {
         <div>{bookDetails.volumeInfo.description}</div>
       </li>
       <div>
-        <ReviewList review={review}/>
+        <ReviewList key={review.id} review={review}/>
       </div>
     </div>
   ) : <h1>Loading...</h1>;
