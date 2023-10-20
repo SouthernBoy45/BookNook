@@ -8,7 +8,7 @@ import ReviewList from "../../components/ReviewList/ReviewList";
 const BookDetails = ({ book, review }) => {
   const { bookId } = useParams();
   const [bookDetails, setBookDetails] = useState();
-
+  
   useEffect(() => {
     displayBookDetails();
   }, [bookId]);
@@ -21,6 +21,17 @@ const BookDetails = ({ book, review }) => {
       setBookDetails(response.data);
       console.log(response);
     } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const addReview = async () => {
+    try {
+      let response = await axios.post(
+        `https://localhost:5001/api/Reveiws/${bookId}`
+      );
+
+    } catch(error) {
       console.log(error);
     }
   };
