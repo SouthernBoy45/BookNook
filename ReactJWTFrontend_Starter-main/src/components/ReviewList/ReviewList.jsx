@@ -31,14 +31,9 @@ const ReviewList = ({ book, review, index }) => {
       <h3>Average Rating {reviews.averageRating}</h3>
       <div>
         <ul>
-          {reviews.map(() => {
-            return (
-              <li>
-                Reviews {reviews.index.text} {reviews.index.rating}{" "}
-                {reviews.index.user.userName}
-              </li>
-            );
-          })}
+          <li key={reviews.id}>
+            Reviews {reviews.text} {reviews.rating} {reviews.userName}
+          </li>
         </ul>
       </div>
     </div>

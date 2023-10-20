@@ -20,12 +20,10 @@ const BookDetails = ({ book, review }) => {
       );
       setBookDetails(response.data);
       console.log(response);
-
     } catch (error) {
       console.log(error);
     }
   };
-
 
   return bookDetails ? (
     <div>
@@ -37,10 +35,12 @@ const BookDetails = ({ book, review }) => {
         <div>{bookDetails.volumeInfo.description}</div>
       </li>
       <div>
-        <ReviewList key={review.id} review={review}/>
+        <ReviewList key={review.id} review={review} />
       </div>
     </div>
-  ) : <h1>Loading...</h1>;
+  ) : (
+    <h1>Loading...</h1>
+  );
 };
 
 export default BookDetails;
