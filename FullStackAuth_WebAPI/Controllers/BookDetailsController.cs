@@ -24,6 +24,7 @@ namespace FullStackAuth_WebAPI.Controllers
                 var reviews = _context.Reviews.Where(r => r.BookId == bookId)
                     .Include(r => r.User).Select(r => new ReviewWithUserDTO
                     {
+                        Id = r.Id,
                         BookId = r.BookId,
                         Text = r.Text,
                         Rating = r.Rating,

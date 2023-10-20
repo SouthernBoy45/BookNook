@@ -31,10 +31,11 @@ const ReviewList = ({ book, review, index }) => {
       <h3>Average Rating {reviews.averageRating}</h3>
       <div>
         <ul>
-          {reviews.reveiws.map((reviews) => {
+          {reviews.map(() => {
             return (
-              <li key={reviews.id}>
-                Reviews {reviews.text} {reviews.rating} {reviews.review.user.userName}
+              <li>
+                Reviews {reviews.index.text} {reviews.index.rating}{" "}
+                {reviews.index.user.userName}
               </li>
             );
           })}
