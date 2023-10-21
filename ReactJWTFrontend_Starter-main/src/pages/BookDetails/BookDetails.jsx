@@ -4,6 +4,7 @@ import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import ReviewList from "../../components/ReviewList/ReviewList";
+import ReviewForm from "../../components/ReviewForm/ReviewForm";
 
 const BookDetails = ({ book, review }) => {
   const { bookId } = useParams();
@@ -25,16 +26,7 @@ const BookDetails = ({ book, review }) => {
     }
   };
 
-  const addReview = async () => {
-    try {
-      let response = await axios.post(
-        `https://localhost:5001/api/Reveiws/${bookId}`
-      );
 
-    } catch(error) {
-      console.log(error);
-    }
-  };
 
   return bookDetails ? (
     <div>
@@ -47,6 +39,9 @@ const BookDetails = ({ book, review }) => {
       </li>
       <div>
         <ReviewList key={review.id} review={review} />
+      </div>
+      <div>
+        <ReviewForm newReview={newReview}/>
       </div>
     </div>
   ) : (
