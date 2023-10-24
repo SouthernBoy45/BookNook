@@ -4,7 +4,7 @@ import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
-const ReviewList = ({ book, review, index }) => {
+const ReviewList = ({ book, review }) => {
   const { bookId } = useParams();
   const [reviews, setReviews] = useState([]);
   const [averageRating, setAverageRaing] = useState(null);

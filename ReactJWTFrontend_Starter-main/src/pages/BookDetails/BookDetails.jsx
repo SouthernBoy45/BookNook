@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 import ReviewList from "../../components/ReviewList/ReviewList";
 import ReviewForm from "../../components/ReviewForm/ReviewForm";
 
-const BookDetails = ({ book, review }) => {
+const BookDetails = ({ book, review, newReview }) => {
   const { bookId } = useParams();
   const [bookDetails, setBookDetails] = useState();
   
@@ -21,6 +21,7 @@ const BookDetails = ({ book, review }) => {
       );
       setBookDetails(response.data);
       console.log(response);
+      
     } catch (error) {
       console.log(error);
     }

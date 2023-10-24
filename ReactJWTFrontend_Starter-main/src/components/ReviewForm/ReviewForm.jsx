@@ -1,15 +1,15 @@
-import React from "react";
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import axios from "axios";
+import { useParams } from "react-router-dom";
 
-
-const ReviewForm = ({newReview}) => {
+const ReviewForm = ( props, newReview ) => {
   const [text, setText] = useState("");
   const [rating, setRating] = useState();
   const [user, setUser] = useState("");
-
+  const { bookId } = useParams();
 
   const handleSubmit = (event) => {
-    e.preventDefault(event);
+    event.preventDefault(event);
     const addReview = async () => {
       try {
         let response = await axios.post(
@@ -18,8 +18,12 @@ const ReviewForm = ({newReview}) => {
         let newReview = {
           text: text,
           rating: rating,
-          user: user
+          user: user,
         };
+        props.newReview(newReview).then(
+          setText(""),
+          setRating("")
+        );
       } catch (error) {
         console.log(error);
       }
@@ -28,10 +32,17 @@ const ReviewForm = ({newReview}) => {
 
   return (
     <div>
-      <label>Leave a Review</label>
-      <textarea value={text} name="textValue" onChange={(event)=>setText(event.target.value)} />
-      <label>Rate the Book (1-5)</label>
-      <input type="number" step="any" min="0" max="5"/>
+      <form onSubmit={handleSubmit}>
+        <label>Leave a Review</label>
+        <textarea
+          value={text}
+          name="textValue"
+          type="text"
+          onChange={(event) => setText(event.target.value)}
+        />
+        <label>Rate the Book (1-5)</label>
+        <input type="number" step="any" min="0" max="5" />
+      </form>
     </div>
   );
 };

@@ -37,7 +37,7 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/search/*" element={<SearchPage searchPageProp book/>} />
-        <Route path="/bookDetails/:bookId" element={<BookDetails book review />} />
+        <Route path="/bookDetails/:bookId" element={<BookDetails book review newReview />} />
       </Routes>
       <Footer />
     </div>
