@@ -7,11 +7,11 @@ import { useParams } from "react-router-dom";
 const ReviewList = ({ book, review }) => {
   const { bookId } = useParams();
   const [reviews, setReviews] = useState([]);
-  const [averageRating, setAverageRaing] = useState(null);
+  const [averageRating, setAverageRating] = useState(null);
 
   useEffect(() => {
     displayReviews();
-  }, [bookId]);
+  }, []);
 
   const displayReviews = async () => {
     try {
@@ -19,7 +19,7 @@ const ReviewList = ({ book, review }) => {
         `https://localhost:5001/api/BookDetails/${bookId}`
       );
       setReviews(response.data.reviews);
-      setAverageRaing(response.data.averageRating);
+      setAverageRating(response.data.averageRating);
       console.log(response);
     } catch (error) {
       console.log(error);
@@ -36,7 +36,8 @@ const ReviewList = ({ book, review }) => {
         <ul>
           {reviews.map((review) => (
             <li key={review.id}>
-              {review.text} User Rating: {review.rating} Username: {review.user.userName}
+              {review.text} User Rating: {review.rating} Username:{" "}
+              {review.user.userName}
             </li>
           ))}
         </ul>

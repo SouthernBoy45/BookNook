@@ -1,18 +1,19 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import ReviewList from "../../components/ReviewList/ReviewList";
 import ReviewForm from "../../components/ReviewForm/ReviewForm";
 
-const BookDetails = ({ book, review, newReview }) => {
+
+const BookDetails = ({ book, review, newReview, displayReviews }) => {
   const { bookId } = useParams();
   const [bookDetails, setBookDetails] = useState();
+
   
   useEffect(() => {
     displayBookDetails();
-  }, [bookId]);
+  }, []);
 
   const displayBookDetails = async () => {
     try {
@@ -39,10 +40,10 @@ const BookDetails = ({ book, review, newReview }) => {
         <div>{bookDetails.volumeInfo.description}</div>
       </li>
       <div>
-        <ReviewList key={review.id} review={review} />
+        <ReviewList review={review} displayReviews={displayReviews} />
       </div>
       <div>
-        <ReviewForm newReview={newReview}/>
+        <ReviewForm newReview={newReview} bookId={bookId} displayReviews={displayReviews}/>
       </div>
     </div>
   ) : (

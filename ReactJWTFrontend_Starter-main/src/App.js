@@ -39,7 +39,7 @@ function App() {
         <Route path="/search/*" element={<SearchPage searchPageProp book/>} />
         <Route path="/bookDetails/:bookId" element={<BookDetails book review newReview />} />
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

@@ -1,12 +1,10 @@
 import React from "react";
 import { useState } from "react";
-import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 import Book from "../../components/Book/Book";
 
-const SearchPage = ({ props, book, review }) => {
+const SearchPage = ({ book, review }) => {
   
-  const [user, token] = useAuth();
   const [userInput, setUserInput] = useState("");
   const [books, setBooks] = useState([]);
 
@@ -24,7 +22,7 @@ const SearchPage = ({ props, book, review }) => {
   console.log(books);
   function handleSubmit(event) {
     event.preventDefault();
-    searchForBooks(userInput);
+    searchForBooks();
   }
 
   return (
@@ -36,14 +34,14 @@ const SearchPage = ({ props, book, review }) => {
           value={userInput}
           onChange={(event) => setUserInput(event.target.value)}
         />
-        <button onClick={searchForBooks} type="submit">
+        <button type="submit">
           Search
         </button>
       </form>
       <h1>Search Results</h1>
       <div>
-        {books && books.map((book, index) => {
-          return(  <Book book = {book} index = {index} key = {book.id}/>)})}</div>
+        {books && books.map((book) => {
+          return(  <Book book = {book} key = {book.id}/>)})}</div>
     </div>
   );
 };
