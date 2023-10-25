@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import "./ReviewForm.css";
 
 const ReviewForm = ({ bookId, displayReviews }) => {
   const [user, token] = useAuth();
@@ -48,7 +49,7 @@ const ReviewForm = ({ bookId, displayReviews }) => {
   };
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="review-form">
         <label>Leave a Review</label>
         <textarea
           value={reviewData.text}

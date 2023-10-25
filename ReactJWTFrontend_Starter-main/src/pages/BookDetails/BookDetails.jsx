@@ -4,6 +4,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import ReviewList from "../../components/ReviewList/ReviewList";
 import ReviewForm from "../../components/ReviewForm/ReviewForm";
+import "./BookDetails.css";
 
 
 const BookDetails = ({ book, review, newReview, displayReviews }) => {
@@ -32,13 +33,15 @@ const BookDetails = ({ book, review, newReview, displayReviews }) => {
 
   return bookDetails ? (
     <div>
+      <div className="header-info">
       <h1>Book Details {bookDetails.volumeInfo.title}</h1>
-      <li>
+      <div>
         <img src={bookDetails.volumeInfo.imageLinks.smallThumbnail} />
         <div>{bookDetails.id}</div>
         <div>{bookDetails.volumeInfo.authors}</div>
-        <div>{bookDetails.volumeInfo.description}</div>
-      </li>
+        </div>
+        <div className="description-container">{bookDetails.volumeInfo.description}</div>
+      </div>
       <div>
         <ReviewList review={review} displayReviews={displayReviews} />
       </div>

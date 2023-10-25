@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import "./ReviewList.css";
 
 const ReviewList = ({ book, review }) => {
   const { bookId } = useParams();
@@ -30,17 +31,24 @@ const ReviewList = ({ book, review }) => {
 
   return (
     <div>
-      <h2>Average Rating {averageRating}</h2>
+      <h2 className="single-container">Average Rating {averageRating}</h2>
       <div>
-        <h3>Reviews</h3>
-        <ul>
+        <h3 className="single-container">Reviews</h3>
+        <ol className="reviews-container">
           {reviews.map((review) => (
-            <li key={review.id}>
-              {review.text} User Rating: {review.rating} Username:{" "}
+            <li className="single-container" key={review.id}>
+              {review.text}{" "}
+              <b>
+                <u>User Rating:</u>
+              </b>{" "}
+              {review.rating}{" "}
+              <b>
+                <u>Username:</u>
+              </b>{" "}
               {review.user.userName}
             </li>
           ))}
-        </ul>
+        </ol>
       </div>
     </div>
   );

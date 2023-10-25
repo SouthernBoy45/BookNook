@@ -1,0 +1,10 @@
+.review-form{
+    margin: 25px;
+    font-size: larger;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: cneter;
+    justify-content: center;
+    align-items: flex-start;
+}
