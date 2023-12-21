@@ -14,9 +14,9 @@ const HomePage = () => {
     fetchReviews();
   }, [token]);
 
-  const fetchReviews = async () => {
+  const fetchReviews = async (userId) => {
     try {
-      let response = await axios.get("https://localhost:5001/api/Reviews", {
+      let response = await axios.get(`https://localhost:5001/api/Reviews/${userId}`, {
         headers: {
           Authorization: "Bearer " + token,
         },

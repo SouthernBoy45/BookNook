@@ -38,7 +38,7 @@ const ReviewList = ({ book, review }) => {
           displayReviews={displayReviews}
         />
       </div>
-      <h2 className="single-container">Average Rating {averageRating}</h2>
+      <h2 className="single-container">Average Rating {averageRating.toFixed(2)}</h2>
       <div>
         <h3 className="single-container">Reviews</h3>
         <ol className="reviews-container">
