@@ -50,14 +50,19 @@ const ReviewForm = ({ bookId, displayReviews }) => {
   return (
     <div>
       <form onSubmit={handleSubmit} className="review-form">
-        <label>Leave a Review</label>
+        <div className="separate-input">
+        <label>Leave a Review</label> 
         <textarea
           value={reviewData.text}
           name="text"
           rows="4"
           onChange={handleInputChange}
         />
+        </div>
+        <div className="separate-input">
         <label>Rate the Book (1-5)</label>
+        </div>
+        <div className="separate-input">
         <input
           type="number"
           name="rating"
@@ -67,7 +72,8 @@ const ReviewForm = ({ bookId, displayReviews }) => {
           max="5"
           onChange={handleInputChange}
         />
-        <button type="submit">Submit</button>
+        </div>
+        <button className="button" type="submit">Submit</button>
       </form>
     </div>
   );
