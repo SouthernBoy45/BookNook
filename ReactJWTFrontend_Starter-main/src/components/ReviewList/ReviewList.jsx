@@ -4,6 +4,7 @@ import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import "./ReviewList.css";
+import ReviewForm from "../ReviewForm/ReviewForm";
 
 const ReviewList = ({ book, review }) => {
   const { bookId } = useParams();
@@ -31,6 +32,12 @@ const ReviewList = ({ book, review }) => {
 
   return (
     <div>
+      <div>
+        <ReviewForm
+          bookId={bookId}
+          displayReviews={displayReviews}
+        />
+      </div>
       <h2 className="single-container">Average Rating {averageRating}</h2>
       <div>
         <h3 className="single-container">Reviews</h3>
